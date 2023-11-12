@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+                #include&lt;stdio.h&gt;
+                    void main(){
+                        int i,j,size,temp;
+                        int arr[50];
+                        
+                        printf("Enter the size of the array: ");
+                        scanf("%d", &amp;size);
+                        
+                        printf("\nEnter the elements:-\n");
+                        for(i=0;i&lt;size;i++){
+                            printf("%dth element:-",i);
+                            scanf("%d",&amp;arr[i]);
+                        }
+                       for (i = 0; i &lt; size - 1; i++) {
+                            for (j = 0; j &lt; size - 1 - i; j++) {
+                                if (arr[j] &gt; arr[j + 1]) {
+                                    temp = arr[j];
+                                    arr[j] = arr[j + 1];
+                                    arr[j + 1] = temp;
+                                }
+                            }
+                        }
+                            printf("\nSorted elements are:-");
+                            for(i=0;i&lt;size;i++){
+                                printf("%d ",arr[i]);
+                            }
+                    }
+            </code>
+        </pre>
+
+       <pre>
+           <h1>OUTPUT</h1>
+            Enter the number of elements in the array: 5
+            Enter 5 integers:
+            Enter 1 value : 13
+            Enter 2 value : 1
+            Enter 3 value : 23
+            Enter 4 value : 27
+            Enter 5 value : 89
+            Sorted array using Bubble Sort:
+            1 0 13 23 27
+            Time taken: 0.000001 seconds
+       </pre>
+        
+                
+</body>
+</html>

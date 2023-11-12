@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <pre>
+            <code>
+                // C program to implement all functions<br>
+                // used in Doubly Linked List<br>
+                
+                #include <stdio.h><br>
+                #include <stdlib.h><br>
+                int i = 0;<br>
+                
+                // Node for Doubly Linked List<br>
+                typedef struct node {<br>
+                    int key;<br>
+                    struct node* prev;<br>
+                    struct node* next;<br>
+                
+                } node;<br>
+                
+                // Head, Tail, first & temp Node<br>
+                node* head = NULL;<br>
+                node* first = NULL;<br>
+                node* temp = NULL;<br>
+                node* tail = NULL;<br>
+                
+                // Function to add a node in the<br>
+                // Doubly Linked List<br>
+                void addnode(int k)<br>
+                {<br>
+                
+                    // Allocating memory<br>
+                    // to the Node ptr<br>
+                    node* ptr<br>
+                        = (node*)malloc(sizeof(node));<br>
+                
+                    // Assign Key to value k<br>
+                    ptr->key = k;<br>
+                
+                    // Next and prev pointer to NULL<br>
+                    ptr->next = NULL;<br>
+                    ptr->prev = NULL;<br>
+                
+                    // If Linked List is empty<br>
+                    if (head == NULL) {<br>
+                        head = ptr;<br>
+                        first = head;<br>
+                        tail = head;<br>
+                    }<br>
+                
+                    // Else insert at the end of the<br>
+                    // Linked List<br>
+                    else {<br>
+                        temp = ptr;<br>
+                        first->next = temp;<br>
+                        temp->prev = first;<br>
+                        first = temp;<br>
+                        tail = temp;<br>
+                    }<br>
+                
+                    // Increment for number of Nodes<br>
+                    // in the Doubly Linked List<br>
+                    i++;<br>
+                }<br>
+                
+                // Function to traverse the Doubly<br>
+                // Linked List<br>
+                void traverse()<br>
+                {<br>
+                    // Nodes points towards head node<br>
+                    node* ptr = head;<br>
+                
+                    // While pointer is not NULL,<br>
+                    // traverse and print the node<br>
+                    while (ptr != NULL) {<br>
+                
+                        // Print key of the node<br>
+                        printf("%d ", ptr->key);<br>
+                        ptr = ptr->next;<br>
+                    }<br>
+                    <br>
+                    printf("\n");<br>
+                }<br>
+                
+                // Function to insert a node at the<br>
+                // beginning of the linked list<br>
+                void insertatbegin(int k)<br>
+                {<br>
+                
+                    // Allocating memory<br>
+                    // to the Node ptr<br>
+                    node* ptr<br>
+                        = (node*)malloc(sizeof(node));<br>
+                
+                    // Assign Key to value k<br>
+                    ptr->key = k;<br>
+                
+                    // Next and prev pointer to NULL<br>
+                    ptr->next = NULL;<br>
+                    ptr->prev = NULL;<br>
+                
+                    // If head is NULL<br>
+                    if (head == NULL) {<br>
+                        first = ptr;<br>
+                        first = head;<br>
+                        tail = head;<br>
+                    }<br>
+                
+                    // Else insert at beginning and<br>
+                    // change the head to current node<br>
+                    else {<br>
+                        temp = ptr;<br>
+                        temp->next = head;<br>
+                        head->prev = temp;<br>
+                        head = temp;<br>
+                    }<br>
+                    i++;<br>
+                }<br>
+                
+                // Function to insert Node at end<br>
+                void insertatend(int k)<br>
+                {<br>
+                
+                    // Allocating memory<br>
+                    // to the Node ptr<br><br>
+                    node* ptr<br>
+                        = (node*)malloc(sizeof(node));<br>
+                
+                    // Assign Key to value k<br>
+                    ptr->key = k;<br>
+                
+                    // Next and prev pointer to NULL<br>
+                    ptr->next = NULL;<br>
+                    ptr->prev = NULL;<br>
+                
+                    // If head is NULL<br>
+                    if (head == NULL) {<br>
+                        first = ptr;<br>
+                        first = head;<br>
+                        tail = head;<br>
+                    }<br>
+                    <br>
+                    // Else insert at the end<br>
+                    else {<br>
+                        temp = ptr;<br>
+                        temp->prev = tail;<br>
+                        tail->next = temp;<br>
+                        tail = temp;<br>
+                    }<br>
+                    i++;<br>
+                }<br>
+                
+                // Function to insert Node at any<br>
+                // position pos<br>
+                void insertatpos(int k, int pos)<br>
+                {<br>
+                
+                    // For Invalid Position<br>
+                    if (pos < 1 || pos > i + 1) {<br>
+                        printf("Please enter a"<br>
+                            " valid position\n");<br>
+                    }<br>
+                
+                    // If position is at the front,<br>
+                    // then call insertatbegin()<br>
+                    else if (pos == 1) {<br>
+                        insertatbegin(k);<br>
+                    }<br>
+                
+                    // Position is at length of Linked<br>
+                    // list + 1, then insert at the end<br>
+                    else if (pos == i + 1) {<br>
+                        insertatend(k);<br>
+                    }<br>
+                
+                    // Else traverse till position pos<br>
+                    // and insert the Node<br>
+                    else {<br>
+                        node* src = head;<br>
+                
+                        // Move head pointer to pos<br>
+                        while (pos--) {<br>
+                            src = src->next;<br>
+                        }<br>
+                
+                        // Allocate memory to new Node<br>
+                        node **da, **ba;<br>
+                        node* ptr<br>
+                            = (node*)malloc(<br>
+                                sizeof(node));<br>
+                        ptr->next = NULL;<br>
+                        ptr->prev = NULL;<br>
+                        ptr->key = k;<br>
+                
+                        // Change the previous and next<br>
+                        // pointer of the nodes inserted<br>
+                        // with previous and next node<br>
+                        ba = &src;<br>
+                        da = &(src->prev);<br>
+                        ptr->next = (*ba);<br>
+                        ptr->prev = (*da);<br><br>
+                        (*da)->next = ptr;<br>
+                        (*ba)->prev = ptr;<br>
+                        i++;<br><br>
+                    }<br>
+                }<br>
+                
+                // Function to delete node at the<br>
+                // beginning of the list<br>
+                void delatbegin()<br>
+                {<br>
+                    // Move head to next and<br>
+                    // decrease length by 1<br>
+                    head = head->next;<br>
+                    i--;<br>
+                }<br>
+                
+                // Function to delete at the end<br>
+                // of the list<br>
+                void delatend()<br>
+                {<br>
+                    // Mode tail to the prev and<br>
+                    // decrease length by 1<br>
+                    tail = tail->prev;<br>
+                    tail->next = NULL;<br>
+                    i--;<br>
+                }<br>
+                
+                // Function to delete the node at<br>
+                // a given position pos<br>
+                void delatpos(int pos)<br>
+                {<br>
+                
+                    // If invalid position<br><br>
+                    if (pos < 1 || pos > i + 1) {<br>
+                        printf("Please enter a"<br>
+                            " valid position\n");<br>
+                    }<br>
+                
+                    // If position is 1, then<br>
+                    // call delatbegin()<br>
+                    else if (pos == 1) {<br>
+                        delatbegin();<br>
+                    }<br>
+                
+                    // If position is at the end, then<br>
+                    // call delatend()<br>
+                    else if (pos == i) {<br>
+                        delatend();<br>
+                    }<br>
+                
+                    // Else traverse till pos, and<br>
+                    // delete the node at pos<br>
+                    else {<br>
+                        // Src node to find which<br>
+                        // node to be deleted<br>
+                        node* src = head;<br>
+                        pos--;<br>
+                
+                        // Traverse node till pos<br>
+                        while (pos--) {<br>
+                            src = src->next;<br>
+                        }<br>
+                        <br>
+                        // previous and after node<br>
+                        // of the src node<br>
+                        node **pre, **aft;<br>
+                        pre = &(src->prev);<br>
+                        aft = &(src->next);<br>
+                
+                        // Change the next and prev<br>
+                        // pointer of pre and aft node<br>
+                        (*pre)->next = (*aft);<br>
+                        (*aft)->prev = (*pre);<br>
+                
+                        // Decrease the length of the<br>
+                        // Linked List<br>
+                        i--;<br>
+                    }<br>
+                }<br>
+                
+                // Driver Code<br>
+                int main()<br>
+                {<br>
+                    // Adding node to the linked List<br>
+                    addnode(2);<br>
+                    addnode(4);<br>
+                    addnode(9);<br>
+                    addnode(1);<br>
+                    addnode(21);<br>
+                    addnode(22);<br>
+                
+                    // To print the linked List<br>
+                    printf("Linked List: ");<br>
+                    traverse();<br>
+                
+                    printf("\n");<br>
+                    <br>
+                    // To insert node at the beginning<br>
+                    insertatbegin(1);<br>
+                    printf("Linked List after"<br>
+                        " inserting 1 "<br>
+                        "at beginning: ");<br>
+                    traverse();<br>
+                
+                    // To insert at the end<br>
+                    insertatend(0);<br>
+                    printf("Linked List after "<br>
+                        "inserting 0 at end: ");<br>
+                    traverse();<br>
+                
+                    // To insert Node with<br>
+                    // value 44 after 3rd Node<br>
+                    insertatpos(44, 3);<br>
+                    printf("Linked List after "<br>
+                        "inserting 44 "
+                        "after 3rd Node: ");<br>
+                    traverse();<br>
+                
+                    printf("\n");<br>
+                
+                    // To delete node at the beginning<br>
+                    delatbegin();<br>
+                    printf("Linked List after "<br>
+                        "deleting node "<br>
+                        "at beginning: ");<br>
+                    traverse();<br>
+                
+                    // To delete at the end<br>
+                    delatend();<br>
+                    printf("Linked List after "<br>
+                        "deleting node at end: ");<br>
+                    traverse();<br>
+                
+                    // To delete Node at position 5<br>
+                    printf("Linked List after "<br><br>
+                        "deleting node "<br>
+                        "at position 5: ");<br>
+                    delatpos(5);<br>
+                    traverse();<br>
+                
+                    return 0;<br>
+                }<br>
+                
+                    </h2>
+            </code>
+        </pre>
+
+<pre>
+    <h1>OUTPUT</h1>
+            Linked List: 2 4 9 1 21 22
+    
+            Linked List after inserting 1 at beginning: 1 2 4 9 1 21 22
+            Linked List after inserting 0 at end: 1 2 4 9 1 21 22 0
+            Linked List after inserting 44 after 3rd Node: 1 2 4 44 9 1 21 22 0
+    
+            Linked List after deleting node at beginning: 2 4 44 9 1 21 22 0
+            Linked List after deleting node at end: 2 4 44 9 1 21 22
+            Linked List after deleting node at position 5: 2 4 44 9 21 22
+</pre>
+        
+    
+</body>
+</html>

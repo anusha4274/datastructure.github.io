@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            #include &ltstdio.h&gt
+                #include&ltstring.h&gt
+            
+                void main()
+                {
+                    char ar[100], i;
+                    //int i;
+                    printf("enter a sentance \t");
+                    gets(ar);
+                    printf("you entered : %s" ,ar);
+                    for(i=0;i!='0';i++)
+                    {
+                      ar[i]=tolower(ar[i]);
+                    }
+                    ar[0]=toupper(ar[0]);
+                    printf(" your sentance in sentance case \t");
+                    printf("%s",ar);
+            
+            
+            }
+        </code>
+    </pre>
+
+    <pre>
+        <h1>OUTPUT</h1>
+        enter a sentance 	anjali bibra
+        you entered : anjali bibra
+        your sentance in sentance case 	Anjali bibra
+    </pre>
+</body>
+</html>

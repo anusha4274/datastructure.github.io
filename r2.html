@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            // calculate fabonacci of a number using recursion
+
+#include&lt;stdio.h&gt;
+int fab(int n)
+{
+    if(n==0)
+    {
+        return 0;
+    }
+    else if (n ==1)
+    {
+        return 1;
+    }
+    else{
+        return (fab(n-1)+fab(n-2));
+    }
+}
+void main()
+{
+    int n;
+    printf("enter a number ");
+    scanf("%d",&n);
+    //printf("the fibonacci series upto %d is : ",n);
+    int result = fab(n);
+        printf("fibonacci of %d  = %d\t",n,result);
+}
+
+        </code>
+    </pre>
+    <pre>
+     <h1>OUTPUT</h1>   
+        enter a number 12
+        fibonacci of 12  = 144	
+            </pre>
+</body>
+</html>

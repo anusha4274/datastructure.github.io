@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            #include&ltstdio.h&gt
+                #include&ltconio.h&gt
+                void main(){
+                char str[20],temp;
+                int i,j,len=0;
+                clrscr();
+                printf("Enter a string: ");
+                gets(str);
+                for(i=0;str[i];i++){
+                 len++;
+                 }
+                printf("Length of the string: %d",len);
+                for(i=0;i & ltlen;i++){
+                 for(j=i+1;j & ltlen;j++){
+                   if(str[i]&gtstr[j]){
+                     temp=str[i];
+                     str[i]=str[j];
+                     str[j]=temp;
+                   }
+                  }
+                 }
+                printf("Sorted string: ");
+                printf("%s",str);
+                getch();
+                }
+        </code>
+    </pre>
+
+    <h1>OUTPUT</h1>
+    <pre>
+        Enter a string: hello world
+        Length of the string: 11
+        Sorted string: ehllo wrld
+    </pre>
+
+</body>
+</html>

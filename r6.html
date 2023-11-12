@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            #include&lt;stdio.h&gt;
+                //covert number into binary using recursion
+                void main()
+                {
+                    int n;
+                    printf("Enter a decimal number: ");
+                    scanf("%d",&n);
+                    convert(n);
+                    }
+                    void convert(int n)
+                    {
+                        if (n &gt; 0)
+                        {
+                            convert(n / 2); //recursive call to divide the number by two
+                            printf("%d ", n % 2); //prints remainder of division
+                            }
+                            else
+                            return ;
+                            }
+        </code>
+    </pre>
+    
+<pre>
+    <h1>OUTPUT</h1>
+    Enter a number: 2100
+    Sum of digits: 3
+</pre>
+
+
+</body>
+</html>
